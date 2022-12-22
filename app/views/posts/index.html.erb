@@ -1,0 +1,43 @@
+<div class="top_menu">
+  <% if user_signed_in? %>
+    <%= link_to 'Профиль', edit_user_registration_path %> | <%= link_to 'Выход', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Войти', new_user_session_path %> | <%= link_to 'Регистрация', new_user_registration_path %>
+  <% end %>
+</div>
+<section class="main">
+  <div class="user">
+    <div class="user_info">
+      <div class="avatar"></div>
+      <div class="txt">
+        <h3>Алиса</h3>
+        <h2>Новичок</h2>
+        <div class="home">
+          <%= link_to 'Профиль', edit_user_registration_path %>
+        </div>
+        <div class="arch">
+          Архив
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lessons_all">
+      <h1>Уроки</h1>
+      <div class="lessons">
+        <% @posts.each do |post| %>
+            <div class="lesson">
+                  <div class="cover"><%= link_to post.image, post %></div>
+                  <h2><%= link_to post.name, post %></h2>
+                  <h3><%= link_to post.title, post %></h3>
+            </div>
+        <% end %>
+      </div>
+
+
+  </div>
+</section>
+
+<p style="color: green"><%= notice %></p>
+
+
+<%# <%= link_to "New post", new_post_path %>
